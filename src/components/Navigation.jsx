@@ -42,7 +42,9 @@ const Navigation = () => {
       '(prefers-color-scheme: dark)',
     ).matches;
 
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    // Default to dark mode if no theme is saved, or if saved is 'dark'
+    // This effectively makes 'dark' the default for new users
+    if (savedTheme === 'dark' || !savedTheme) {
       setIsDark(true);
       document.documentElement.classList.add('dark');
     }
